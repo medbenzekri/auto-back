@@ -4,12 +4,13 @@ import gi
 from gi.repository import GObject
 # from gi.repository import Ide
 import requests
-
+import json
 class MyAppAddin(GObject.Object):
     def getcatigory():
         query = {'lat':'45', 'lon':'180'}
         response = requests.get("https://wallhaven.cc/api/v1/search?categories=111",params=query)
-        print(response.json())
+        dic=response.json()
+        print(dic['data'])
         
 
     def do_load(self, application):
