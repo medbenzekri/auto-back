@@ -10,7 +10,7 @@ class MyAppAddin(GObject.Object):
         query = {'lat':'45', 'lon':'180'}
         response = requests.get("https://wallhaven.cc/api/v1/search?categories=111",params=query)
         dic=response.json()
-        print(dic['data'][0]['path'])
+        print(dic['data'])
         
 
     def do_load(self, application):
