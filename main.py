@@ -9,7 +9,7 @@ import os
 import subprocess
 class MyAppAddin(GObject.Object):
     def getcatigory():
-        response = requests.get("https://wallhaven.cc/api/v1/search?categories=110")
+        response = requests.get("https://wallhaven.cc/api/v1/search?q=hill")
         dic=response.json()
         path=dic['data'][0]['path']
         print(path)
@@ -19,6 +19,7 @@ class MyAppAddin(GObject.Object):
         fname="img.png"
         im.save(fname)
         dirpath=f"{os.path.dirname(os.path.realpath(__file__))}/{fname}"
+        os.system("chmod +x ./script")
         subprocess.call(f" ./script --image '{dirpath}'",shell=True)
 
 
