@@ -1,0 +1,7 @@
+[Plugin]
+Name=auto-back
+Loader=python3
+Module=main
+Author=med,yazid
+X-Builder-ABI=3.32
+X-Has-Resources=true
