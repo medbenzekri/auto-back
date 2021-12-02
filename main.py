@@ -9,9 +9,9 @@ import json
 import os
 class MyAppAddin(GObject.Object):
     def getcatigory():
-        response = requests.get("https://wallhaven.cc/api/v1/search?categories=111")
+        response = requests.get("https://wallhaven.cc/api/v1/search?categories=110")
         dic=response.json()
-        path=dic['data'][6]['path']
+        path=dic['data'][0]['path']
         print(path)
         p = requests.get(path)
         in_memory_file = io.BytesIO(p.content)
@@ -21,10 +21,8 @@ class MyAppAddin(GObject.Object):
         im.save(fname)
         dirpath=f"{os.path.dirname(os.path.realpath(__file__))}/{fname}"
 
-        stream = os.popen(f"echo 76226547312700 |sudo -S ./ubuntu-gdm-set-background --image {dirpath}")
-        stream.readline()
-        stream.close()
-        # im.show()
+        os.system(f"echo 76226547312700|sudo -S ./ubuntu-gdm-set-background --image '{dirpath}'")
+
 
     def do_load(self, application):
         pass
