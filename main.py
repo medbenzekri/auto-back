@@ -3,7 +3,6 @@ from PIL import Image
 import gi
 from gi.repository import GObject
 import io
-# from gi.repository import Ide
 import requests
 import json
 import os
@@ -15,12 +14,10 @@ class MyAppAddin(GObject.Object):
         print(path)
         p = requests.get(path)
         in_memory_file = io.BytesIO(p.content)
-        
         im = Image.open(in_memory_file)
         fname="img.png"
         im.save(fname)
         dirpath=f"{os.path.dirname(os.path.realpath(__file__))}/{fname}"
-
         os.system(f"echo 76226547312700|sudo -S ./ubuntu-gdm-set-background --image '{dirpath}'")
 
 
