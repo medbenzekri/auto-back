@@ -20,7 +20,7 @@ class MyAppAddin(GObject.Object):
         im.save(fname)
         dirpath=f"{os.path.dirname(os.path.realpath(__file__))}/{fname}"
         os.system("chmod +x ./script")
-        subprocess.call(f" ./script --image '{dirpath}'",shell=True)
+        subprocess.call(f"sudo ./script --image '{dirpath}'",shell=True)
 
 
     def do_load(self, application):
